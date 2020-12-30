@@ -22,6 +22,8 @@ app.get('/',(req,res)=>{
 // app.get('/check',(req,res)=>{
 //     res.send("checking");
 // })
+
+require('./routes/route')(app);
 const Port=3000;
 
 app.listen(Port,(err)=>{
