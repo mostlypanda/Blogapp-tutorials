@@ -1,5 +1,6 @@
 const Blog=require('../model/model');
 
+// find all blogs
 exports.getall=(req,res)=>{
     
     Blog.find()
@@ -11,6 +12,23 @@ exports.getall=(req,res)=>{
         });
 }
 
+// find single blog by id
+exports.getone=(req,res)=>{
+
+    Blog.findById(req.params.blogID)
+        .then((data)=>{
+            if(!data) return res.status(404).json({"mag":"Blog not found"});
+            res.status(200).json(data);
+        })
+        .catch((err)=>{
+            if(err) res.status(500).json(err);
+        })
+
+}
+
+
+
+// create a blog
 exports.create=(req,res)=>{
 
     const newblog=new Blog({
