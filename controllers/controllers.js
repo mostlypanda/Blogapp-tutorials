@@ -58,6 +58,7 @@ exports.updateone=(req,res)=>{
         desc:req.body.desc
     },{new: true})
         .then((data)=>{
+
             if(!data) return res.status(404).json({"msg":"Not found"});
             res.status(202).json({
                 "msg":"updated",
@@ -67,4 +68,26 @@ exports.updateone=(req,res)=>{
         .catch((err)=>{
             if(err) res.status(500).json(err)
         })    
+}
+
+
+// to delete a blog
+
+exports.deleteone=(req,res)=>{
+
+    Blog.findByIdAndDelete(req.params.blogID)
+        .then((data)=>{
+
+            if(!data) return res.status(404).json({"msg":"Blog not found"});
+
+            res.status(202).json({
+                "msg":"deleted",
+                "doc":data
+            });
+
+        })
+        .catch((err)=>{
+            if(err) res.status(500).json(err);
+        })
+
 }
