@@ -44,3 +44,27 @@ exports.create=(req,res)=>{
         if(err) return res.status(500).json(err);
     })
 }
+
+//to update a blog
+
+exports.updateone=(req,res)=>{
+
+    if(!req.body.title||!req.body.desc||!req.body.author)
+        return res.status(500).json({"msg":"fill all the fields"});
+    
+    Blog.findByIdAndUpdate(req.params.blogID,{
+        title: req.body.title,
+        author:req.body.author,
+        desc:req.body.desc
+    },{new: true})
+        .then((data)=>{
+            if(!data) return res.status(404).json({"msg":"Not found"});
+            res.status(202).json({
+                "msg":"updated",
+                "doc":data
+            });
+        })
+        .catch((err)=>{
+            if(err) res.status(500).json(err)
+        })    
+}
