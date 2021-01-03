@@ -10,6 +10,15 @@ exports.getall=(req,res)=>{
         .catch((err)=>{
             if(err) res.status(500).json(err);
         });
+    // let data;
+    // try {
+    //     data = await Blog.find();
+    //     console.log(data);
+
+    // } catch (err) {
+    //     if(err) return res.status(500).json(err);
+    // }
+    // res.status(200).json(data);
 }
 
 // find single blog by id
@@ -25,7 +34,9 @@ exports.getone=(req,res)=>{
         })
 
 }
-
+//author 
+//title 
+//desc 
 
 
 // create a blog
@@ -88,6 +99,6 @@ exports.deleteone=(req,res)=>{
         })
         .catch((err)=>{
             if(err) res.status(500).json(err);
-        })
+        });
 
 }
