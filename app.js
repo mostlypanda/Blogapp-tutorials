@@ -27,7 +27,7 @@ app.get('/',(req,res)=>{
 
 require('./routes/route')(app);
 
-const Port=3000;
+const Port=process.env.PORT||3000;
 
 app.listen(Port,(err)=>{
     if(err) console.log(err);
