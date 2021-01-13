@@ -22,11 +22,11 @@ app.get('/',(req,res)=>{
     res.send("Welcome to the class");
 });
 
+require('./routes/route')(app);
 app.use('*',(req,res,next)=>{
     res.status(404).json({"msg":"Not found"});
 });
 
-require('./routes/route')(app);
 
 const Port=process.env.PORT||3000;
 
