@@ -23,9 +23,7 @@ app.get('/',(req,res)=>{
 });
 
 require('./routes/route')(app);
-app.use('*',(req,res,next)=>{
-    res.status(404).json({"msg":"Not found"});
-});
+
 
 
 const Port=process.env.PORT||3000;
