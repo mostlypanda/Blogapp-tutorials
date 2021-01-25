@@ -3,7 +3,7 @@ const Blog=require('../model/model');
 // find all blogs
 exports.getall=(req,res)=>{
     
-    Blog.find()
+    Blog.find().sort({updatedAt:'desc'})
         .then((data)=>{
             res.status(200).json(data);
         })
